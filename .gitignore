@@ -1,24 +1,33 @@
-# Compiled class file
-*.class
+import java.util.Random;
+import java.util.Scanner;
 
-# Log file
-*.log
+public class DiceGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
-# BlueJ files
-*.ctxt
+        System.out.println("Rolling dice...");
+        int die1 = rollDice(random);
+        int die2 = rollDice(random);
+        int total = die1 + die2;
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+        System.out.println("Die 1: " + die1);
+        System.out.println("Die 2: " + die2);
+        System.out.println("Total value: " + total);
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+        System.out.print("What is your name? \n> ");
+        String name = scanner.nextLine();
+        System.out.println("Hello, " + name + "!");
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+        if (total > 7) {
+            System.out.println(name + " won!");
+        } else {
+            System.out.println(name + " lost.");
+        }
+    }
+
+    public static int rollDice(Random random) {
+        return random.nextInt(6) + 1;
+    }
+}
+
